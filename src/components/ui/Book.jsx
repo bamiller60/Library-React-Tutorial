@@ -7,7 +7,7 @@ import Price from "./Price";
 const Book = ({ book }) => {
   const [img, setImg] = useState();
 
-  const mountedRef = useRef(true);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
     const image = new Image();
@@ -21,7 +21,7 @@ const Book = ({ book }) => {
     };
     return () => {
       // Cleanup function to prevent setting state on an unmounted component -> When component mounts, mountedRef.current is true. When component unmounts, mountedRef.current is set to false. Before setting state in the onload callback, we check if mountedRef.current is still true.
-      mountedRef.current = false;
+      mountedRef.current = true;
     }
   })
 
